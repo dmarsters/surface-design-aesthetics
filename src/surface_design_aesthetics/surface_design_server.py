@@ -1140,4 +1140,10 @@ async def get_surface_server_info() -> str:
 # ============================================================================
 
 if __name__ == "__main__":
-    mcp.run(transport="sse")
+    import asyncio
+    try:
+        mcp.run(transport="sse")
+    except RuntimeError:
+        # Already in an event loop (FastMCP cloud)
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(mcp.run_async(transport="sse"))
