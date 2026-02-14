@@ -27,7 +27,7 @@ Deployment:
 import json
 import math
 from typing import Dict, List, Optional, Any
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 # ============================================================================
 # Server Initialization
@@ -1140,10 +1140,4 @@ async def get_surface_server_info() -> str:
 # ============================================================================
 
 if __name__ == "__main__":
-    import asyncio
-    try:
-        mcp.run(transport="sse")
-    except RuntimeError:
-        # Already in an event loop (FastMCP cloud)
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(mcp.run_async(transport="sse"))
+    mcp.run()
