@@ -1,0 +1,65 @@
+[project]
+name = "surface-design-aesthetics"
+version = "1.0.0"
+description = "Surface Design Aesthetics MCP Server — material finish morphospace from automotive lacquer to organic seedcoats"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Dal Marsters" },
+]
+keywords = [
+    "mcp",
+    "surface-design",
+    "material-science",
+    "aesthetics",
+    "morphospace",
+    "image-generation",
+    "text-to-image",
+    "visual-vocabulary",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Artistic Software",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "ruff>=0.1.0",
+]
+dynamics = [
+    "aesthetic-dynamics-core>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[project.scripts]
+surface-design-mcp = "surface_design_server:mcp.run"
