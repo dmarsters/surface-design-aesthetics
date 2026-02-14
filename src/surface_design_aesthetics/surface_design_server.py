@@ -1140,4 +1140,4 @@ async def get_surface_server_info() -> str:
 # ============================================================================
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="sse")
